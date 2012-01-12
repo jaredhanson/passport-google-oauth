@@ -95,8 +95,8 @@ application:
 
 ## Examples
 
-For a complete, working example, refer to the [OAuth 1.0 example](https://github.com/jaredhanson/passport-google/tree/master/examples/oauth)
-and the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google/tree/master/examples/oauth2).
+For a complete, working example, refer to the [OAuth 1.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth)
+and the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth2).
 
 ## Tests
 
