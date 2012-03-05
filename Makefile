@@ -10,7 +10,7 @@ docs: docs/api.html
 docs/api.html: lib/passport-google-oauth/*.js
 	dox \
 		--title Passport-Google-OAuth \
-		--desc "Google (OAuth 1.0 and OAuth 2.0) authentication strategies for Passport" \
+		--desc "Google (OAuth) authentication strategies for Passport" \
 		$(shell find lib/passport-google-oauth/* -type f) > $@
 
 docclean:

@@ -1,7 +1,7 @@
 # Passport-Google-OAuth
 
 [Passport](https://github.com/jaredhanson/passport) strategies for
-authenticating with Google using OAuth 1.0a and OAuth 2.0.
+authenticating with [Google](http://www.google.com/) using OAuth 1.0a and OAuth 2.0.
 
 ## Installation
 
@@ -102,6 +102,8 @@ and the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google-oauth
 
     $ npm install --dev
     $ make test
+
+[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-google-oauth.png)](http://travis-ci.org/jaredhanson/passport-google-oauth)
 
 ## Credits
 
