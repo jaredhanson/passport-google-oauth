@@ -20,6 +20,34 @@ vows.describe('GoogleStrategy').addBatch({
     },
   },
   
+  'strategy authorization params': {
+    topic: function() {
+      return new GoogleStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      },
+      function() {});
+    },
+    
+    'should return empty object when parsing invalid options': function (strategy) {
+      var params = strategy.authorizationParams({ foo: 'bar' });
+      assert.lengthOf(Object.keys(params), 0);
+    },
+    'should return access_type': function (strategy) {
+      var params = strategy.authorizationParams({ accessType: 'offline' });
+      assert.equal(params.access_type, 'offline');
+    },
+    'should return approval_prompt': function (strategy) {
+      var params = strategy.authorizationParams({ approvalPrompt: 'force' });
+      assert.equal(params.approval_prompt, 'force');
+    },
+    'should return access_type and approval_prompt': function (strategy) {
+      var params = strategy.authorizationParams({ accessType: 'offline', approvalPrompt: 'force' });
+      assert.equal(params.access_type, 'offline');
+      assert.equal(params.approval_prompt, 'force');
+    },
+  },
+  
   'strategy when loading user profile': {
     topic: function() {
       var strategy = new GoogleStrategy({
