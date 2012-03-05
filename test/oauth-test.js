@@ -20,6 +20,25 @@ vows.describe('GoogleStrategy').addBatch({
     },
   },
   
+  'strategy request token params': {
+    topic: function() {
+      return new GoogleStrategy({
+        consumerKey: 'ABC123',
+        consumerSecret: 'secret'
+      },
+      function() {});
+    },
+    
+    'should return scope': function (strategy) {
+      var params = strategy.requestTokenParams({ scope: 'x' });
+      assert.equal(params.scope, 'x');
+    },
+    'should return concatenated scope from array': function (strategy) {
+      var params = strategy.requestTokenParams({ scope: ['x', 'y'] });
+      assert.equal(params.scope, 'x y');
+    },
+  },
+  
   'strategy when loading user profile': {
     topic: function() {
       var strategy = new GoogleStrategy({
