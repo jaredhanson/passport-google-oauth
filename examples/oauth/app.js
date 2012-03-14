@@ -3,7 +3,9 @@ var express = require('express')
   , util = require('util')
   , GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
-var GOOGLE_CONSUMER_KEY = "--insert-google-consumer-key-here--"
+// API Access link for creating client ID and secret:
+// https://code.google.com/apis/console/b/0/
+var GOOGLE_CONSUMER_KEY = "--insert-google-consumer-key-here--";
 var GOOGLE_CONSUMER_SECRET = "--insert-google-consumer-secret-here--";
 
 
@@ -118,5 +120,5 @@ app.listen(3000);
 //   login page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('/login');
 }
