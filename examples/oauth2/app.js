@@ -4,7 +4,7 @@ var express = require('express')
   , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // API Access link for creating client ID and secret:
-// https://code.google.com/apis/console/b/0/
+// https://code.google.com/apis/console/
 var GOOGLE_CLIENT_ID = "--insert-google-client-id-here--";
 var GOOGLE_CLIENT_SECRET = "--insert-google-client-secret-here--";
 

@@ -3,8 +3,9 @@ var express = require('express')
   , util = require('util')
   , GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
-// API Access link for creating client ID and secret:
-// https://code.google.com/apis/console/b/0/
+// API Access link for creating consumer key and secret:
+// https://developers.google.com/accounts/docs/RegistrationForWebAppsAuto
+// https://accounts.google.com/ManageDomains
 var GOOGLE_CONSUMER_KEY = "--insert-google-consumer-key-here--";
 var GOOGLE_CONSUMER_SECRET = "--insert-google-consumer-secret-here--";
 
