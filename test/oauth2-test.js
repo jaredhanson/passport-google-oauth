@@ -41,6 +41,22 @@ vows.describe('GoogleStrategy').addBatch({
       var params = strategy.authorizationParams({ approvalPrompt: 'force' });
       assert.equal(params.approval_prompt, 'force');
     },
+    'should return prompt': function (strategy) {
+      var params = strategy.authorizationParams({ prompt: 'consent' });
+      assert.equal(params.prompt, 'consent');
+    },
+    'should return login_hint': function (strategy) {
+      var params = strategy.authorizationParams({ loginHint: 'bob@gmail.com' });
+      assert.equal(params.login_hint, 'bob@gmail.com');
+    },
+    'should return hd from hostedDomain option': function (strategy) {
+      var params = strategy.authorizationParams({ hostedDomain: 'mycollege.edu' });
+      assert.equal(params.hd, 'mycollege.edu');
+    },
+    'should return hd from hd option': function (strategy) {
+      var params = strategy.authorizationParams({ hd: 'mycollege.edu' });
+      assert.equal(params.hd, 'mycollege.edu');
+    },
     'should return access_type and approval_prompt': function (strategy) {
       var params = strategy.authorizationParams({ accessType: 'offline', approvalPrompt: 'force' });
       assert.equal(params.access_type, 'offline');
