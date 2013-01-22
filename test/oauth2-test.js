@@ -49,6 +49,10 @@ vows.describe('GoogleStrategy').addBatch({
       var params = strategy.authorizationParams({ loginHint: 'bob@gmail.com' });
       assert.equal(params.login_hint, 'bob@gmail.com');
     },
+    'should return user_id': function (strategy) {
+      var params = strategy.authorizationParams({ userID: 'bob@gmail.com' });
+      assert.equal(params.user_id, 'bob@gmail.com');
+    },
     'should return hd from hostedDomain option': function (strategy) {
       var params = strategy.authorizationParams({ hostedDomain: 'mycollege.edu' });
       assert.equal(params.hd, 'mycollege.edu');
