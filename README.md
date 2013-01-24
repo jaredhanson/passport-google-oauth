@@ -22,6 +22,8 @@ account and OAuth tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as `options`
 specifying a consumer key, consumer secret, and callback URL.
 
+    var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+
     passport.use(new GoogleStrategy({
         consumerKey: GOOGLE_CONSUMER_KEY,
         consumerSecret: GOOGLE_CONSUMER_SECRET,
@@ -60,6 +62,8 @@ The Google OAuth 2.0 authentication strategy authenticates users using a Google
 account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
+
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
     passport.use(new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
