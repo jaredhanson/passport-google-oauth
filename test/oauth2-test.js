@@ -66,8 +66,12 @@ vows.describe('GoogleStrategy').addBatch({
       assert.equal(params.access_type, 'offline');
       assert.equal(params.approval_prompt, 'force');
     },
+    'should return requestVisibleActions from requestVisibleActions option': function (strategy) {
+      var params = strategy.authorizationParams({ requestVisibleActions: 'action' });
+      assert.equal(params.request_visible_actions, 'action');
+    },
   },
-  
+
   'strategy when loading user profile': {
     topic: function() {
       var strategy = new GoogleStrategy({
