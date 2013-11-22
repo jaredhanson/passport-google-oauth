@@ -22,19 +22,21 @@ account and OAuth tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as `options`
 specifying a consumer key, consumer secret, and callback URL.
 
-    var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+```Javascript
+var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
-    passport.use(new GoogleStrategy({
-        consumerKey: GOOGLE_CONSUMER_KEY,
-        consumerSecret: GOOGLE_CONSUMER_SECRET,
-        callbackURL: "http://127.0.0.1:3000/auth/google/callback"
-      },
-      function(token, tokenSecret, profile, done) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-          return done(err, user);
-        });
-      }
-    ));
+passport.use(new GoogleStrategy({
+    consumerKey: GOOGLE_CONSUMER_KEY,
+    consumerSecret: GOOGLE_CONSUMER_SECRET,
+    callbackURL: "http://127.0.0.1:3000/auth/google/callback"
+  },
+  function(token, tokenSecret, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+```
 
 #### Authenticate Requests
 
@@ -44,15 +46,17 @@ authenticate requests.
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
-    app.get('/auth/google',
-      passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' }));
+```Javascript
+app.get('/auth/google',
+  passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' }));
 
-    app.get('/auth/google/callback', 
-      passport.authenticate('google', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-      });
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+```
 
 ## Usage of OAuth 2.0
 
@@ -63,19 +67,21 @@ account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
 
-    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+```Javascript
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-    passport.use(new GoogleStrategy({
-        clientID: GOOGLE_CLIENT_ID,
-        clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://127.0.0.1:3000/auth/google/callback"
-      },
-      function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-          return done(err, user);
-        });
-      }
-    ));
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://127.0.0.1:3000/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+```
 
 #### Authenticate Requests
 
@@ -85,15 +91,17 @@ authenticate requests.
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
-    app.get('/auth/google',
-      passport.authenticate('google'));
+```Javascript
+app.get('/auth/google',
+  passport.authenticate('google'));
 
-    app.get('/auth/google/callback', 
-      passport.authenticate('google', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-      });
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+```
 
 ## Examples
 
