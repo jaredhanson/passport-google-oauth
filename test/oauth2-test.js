@@ -87,7 +87,8 @@ vows.describe('GoogleStrategy').addBatch({
          "family_name": "Example", \
          "picture": "https://lh5.googleusercontent.com/-2Sv-4bBMLLA/AAAAAAAAAAI/AAAAAAAAABo/bEG4kI2mG0I/photo.jpg", \
          "gender": "male", \
-         "locale": "en-US" \
+         "locale": "en-US", \
+         "link" : "https://plus.google.com/XXXXXXXXXXXXXXXXXXXXXXX" \
         }';
         
         callback(null, body, undefined);
@@ -118,6 +119,10 @@ vows.describe('GoogleStrategy').addBatch({
         assert.equal(profile.name.familyName, 'Example');
         assert.equal(profile.name.givenName, 'Fred');
         assert.equal(profile.emails[0].value, 'fred.example@gmail.com');
+        assert.equal(profile.profileUrl, 'https://plus.google.com/XXXXXXXXXXXXXXXXXXXXXXX');
+        assert.equal(profile.photos.length, 1);
+        assert.equal(profile.photos[0].value, 'https://lh5.googleusercontent.com/-2Sv-4bBMLLA/AAAAAAAAAAI/AAAAAAAAABo/bEG4kI2mG0I/photo.jpg');
+        assert.equal(profile.photos[0].type, 'thumb');
       },
       'should set raw property' : function(err, profile) {
         assert.isString(profile._raw);
