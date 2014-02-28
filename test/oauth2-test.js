@@ -61,6 +61,10 @@ vows.describe('GoogleStrategy').addBatch({
       var params = strategy.authorizationParams({ hd: 'mycollege.edu' });
       assert.equal(params.hd, 'mycollege.edu');
     },
+    'should return include_granted_scopes from includeGrantedScopes option': function (strategy) {
+      var params = strategy.authorizationParams({ includeGrantedScopes: 'true' });
+      assert.equal(params.include_granted_scopes, 'true');
+    },
     'should return access_type and approval_prompt': function (strategy) {
       var params = strategy.authorizationParams({ accessType: 'offline', approvalPrompt: 'force' });
       assert.equal(params.access_type, 'offline');
