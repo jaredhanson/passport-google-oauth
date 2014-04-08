@@ -54,12 +54,12 @@ vows.describe('GoogleStrategy').addBatch({
       assert.equal(params.user_id, 'bob@gmail.com');
     },
     'should return hd from hostedDomain option': function (strategy) {
-      var params = strategy.authorizationParams({ hostedDomain: 'mycollege.edu' });
-      assert.equal(params.hd, 'mycollege.edu');
+      var params = strategy.authorizationParams({ domain: 'mycollege.edu' });
+      assert.equal(params.domain, 'mycollege.edu');
     },
     'should return hd from hd option': function (strategy) {
-      var params = strategy.authorizationParams({ hd: 'mycollege.edu' });
-      assert.equal(params.hd, 'mycollege.edu');
+      var params = strategy.authorizationParams({ domain: 'mycollege.edu' });
+      assert.equal(params.domain, 'mycollege.edu');
     },
     'should return access_type and approval_prompt': function (strategy) {
       var params = strategy.authorizationParams({ accessType: 'offline', approvalPrompt: 'force' });
@@ -81,10 +81,10 @@ vows.describe('GoogleStrategy').addBatch({
         var body = '{ \
          "id": "00000000000000", \
          "email": "fred.example@gmail.com", \
-         "verified_email": true, \
+         "verified": true, \
          "name": "Fred Example", \
-         "given_name": "Fred", \
-         "family_name": "Example", \
+         "givenName": "Fred", \
+         "familyName": "Example", \
          "picture": "https://lh5.googleusercontent.com/-2Sv-4bBMLLA/AAAAAAAAAAI/AAAAAAAAABo/bEG4kI2mG0I/photo.jpg", \
          "gender": "male", \
          "locale": "en-US" \
