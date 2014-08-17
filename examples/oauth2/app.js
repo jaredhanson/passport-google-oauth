@@ -1,13 +1,18 @@
-var express = require('express')
-  , passport = require('passport')
-  , util = require('util')
-  , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var express   		 = require( 'express' )
+  , app       		 = express()
+  , server    		 = require( 'http' ).createServer( app ) 
+  , passport         = require( 'passport' )
+  , util             = require( 'util' )
+  , bodyParser       = require( 'body-parser' )
+  , cookieParser     = require( 'cookie-parser' )
+  , session          = require( 'express-session' )
+  , RedisStore       = require( 'connect-redis' )( session )
+  , GoogleStrategy   = require( 'kroknet-passport-google-oauth' ).Strategy;
 
 // API Access link for creating client ID and secret:
 // https://code.google.com/apis/console/
-var GOOGLE_CLIENT_ID = "--insert-google-client-id-here--";
-var GOOGLE_CLIENT_SECRET = "--insert-google-client-secret-here--";
-
+var GOOGLE_CLIENT_ID      = "--insert-google-client-id-here--"
+  , GOOGLE_CLIENT_SECRET  = "--insert-google-client-secret-here--";
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -30,7 +35,7 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an accessToken, refreshToken, and Google
 //   profile), and invoke a callback with a user object.
 passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
+    clientID:     GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
     //NOTE :
     //Carefull ! and avoid usage of Private IP, otherwise you will get the device_id device_name issue for Private IP during authentication
@@ -54,28 +59,28 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-
-
-
-var app = express.createServer();
-
 // configure Express
-app.configure(function() {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.logger());
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
-  // persistent login sessions (recommended).
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
-
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use( express.static(__dirname + '/public'));
+app.use( cookieParser()); 
+app.use( bodyParser.json());
+app.use( bodyParser.urlencoded({
+	extended: true
+}));
+app.use( session({ 
+	secret: 'cookie_secret',
+	name:   'kaas',
+	store:  new RedisStore({
+		host: '127.0.0.1',
+		port: 6379
+	}),
+	proxy:  true,
+    resave: true,
+    saveUninitialized: true
+}));
+app.use( passport.initialize());
+app.use( passport.session());
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -115,7 +120,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.listen(3000);
+server.listen( 3000 );
 
 
 // Simple route middleware to ensure user is authenticated.
