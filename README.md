@@ -70,19 +70,19 @@ app.get( '/auth/google/callback',
 #### What you will get in profile response ? 
 
 ```
-provider         always set to `google`
-id
-name
-displayName
-birthday
-relationship
-isPerson
-isPlusUser
-placesLived
-language
-emails
-gender
-picture
+   provider         always set to `google`
+   id
+   name
+   displayName
+   birthday
+   relationship
+   isPerson
+   isPlusUser
+   placesLived
+   language
+   emails
+   gender
+   picture
 ```
 
 ## Examples
