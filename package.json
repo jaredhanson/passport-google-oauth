@@ -19,7 +19,7 @@
     "type": "MIT",
     "url": "http://www.opensource.org/licenses/MIT" 
   } ],
-  "main": "./lib/passport-google-oauth",
+  "main": "./lib/kroknet-passport-google-oauth",
   "dependencies": {
     "pkginfo": "0.2.x",
     "passport-oauth2": "~1.1.2"
