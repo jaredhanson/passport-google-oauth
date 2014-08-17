@@ -1,14 +1,14 @@
 {
   "name": "passport-google-oauth",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Google (OAuth) authentication strategies for Passport.",
   "keywords": ["passport", "google", "auth", "authn", "authentication", "identity"],
   "repository": {
     "type": "git",
-    "url": "git://github.com/jaredhanson/passport-google-oauth.git"
+    "url": "git://github.com/Estebita/passport-google-oauth.git"
   },
   "bugs": {
-    "url": "http://github.com/jaredhanson/passport-google-oauth/issues"
+    "url": "http://github.com/Estebita/passport-google-oauth/issues"
   },
   "author": {
     "name": "Jared Hanson",
@@ -22,7 +22,7 @@
   "main": "./lib/passport-google-oauth",
   "dependencies": {
     "pkginfo": "0.2.x",
-    "passport-oauth": "~0.1.4"
+    "passport-oauth2": "~1.1.2"
   },
   "devDependencies": {
     "vows": "0.6.x"

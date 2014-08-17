@@ -1,7 +1,7 @@
 # Passport-Google-OAuth
 
 [Passport](http://passportjs.org/) strategies for authenticating with [Google](http://www.google.com/)
-using OAuth 1.0a and OAuth 2.0.
+using ONLY OAuth 2.0.
 
 This module lets you authenticate using Google in your Node.js applications.
 By plugging into Passport, Google authentication can be easily and
@@ -11,52 +11,7 @@ unobtrusively integrated into any application or framework that supports
 
 ## Install
 
-    $ npm install passport-google-oauth
-
-## Usage of OAuth 1.0
-
-#### Configure Strategy
-
-The Google OAuth 1.0 authentication strategy authenticates users using a Google
-account and OAuth tokens.  The strategy requires a `verify` callback, which
-accepts these credentials and calls `done` providing a user, as well as `options`
-specifying a consumer key, consumer secret, and callback URL.
-
-```Javascript
-var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
-
-passport.use(new GoogleStrategy({
-    consumerKey: GOOGLE_CONSUMER_KEY,
-    consumerSecret: GOOGLE_CONSUMER_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/google/callback"
-  },
-  function(token, tokenSecret, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
-```
-
-#### Authenticate Requests
-
-Use `passport.authenticate()`, specifying the `'google'` strategy, to
-authenticate requests.
-
-For example, as route middleware in an [Express](http://expressjs.com/)
-application:
-
-```Javascript
-app.get('/auth/google',
-  passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' }));
-
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
-```
+    $ npm install kroknet-passport-google-oauth
 
 ## Usage of OAuth 2.0
 
@@ -93,20 +48,21 @@ application:
 
 ```Javascript
 app.get('/auth/google',
-  passport.authenticate('google'));
+  passport.authenticate('google', { scope: 
+  	'https://www.googleapis.com/auth/plus.login',
+  	'https://www.googleapis.com/auth/plus.profile.emails.read' }
+));
 
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+app.get( '/auth/google/callback', 
+	passport.authenticate( 'google', { 
+		successRedirect: '/auth/google/success',
+		failureRedirect: '/auth/google/failure'
+}));
 ```
 
 ## Examples
 
-For a complete, working example, refer to the [OAuth 1.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth)
-and the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth2).
+For a complete, working example, refer to the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth2).
 
 ## Tests
 
