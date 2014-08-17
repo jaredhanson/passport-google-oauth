@@ -23,17 +23,11 @@ accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
 
 ```Javascript
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var GoogleStrategy = require( 'kroknet-passport-google-oauth' ).Strategy;
 
 passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
+    clientID:     GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    //NOTE :
-    //Carefull ! and avoid usage of Private IP, otherwise you will get the device_id device_name issue for Private IP during authentication
-    //The workaround is to set up thru the google cloud console a fully qualified domain name such as http://mydomain:3000/ 
-    //then edit your /etc/hosts local file to point on your private IP. 
-    //Also both sign-in button + callbackURL has to be share the same url, otherwise two cookies will be created and lead to lost your session
-    //if you use it.
     callbackURL: "http://yourdormain:3000/auth/google/callback",
     passReqToCallback   : true
   },
@@ -44,6 +38,13 @@ passport.use(new GoogleStrategy({
   }
 ));
 ```
+
+#### Note about Local environment 
+
+Avoid usage of Private IP, otherwise you will get the device_id device_name issue for Private IP during authentication
+A workaround consist to set up thru the google cloud console a fully qualified domain name such as http://mydomain:3000/ for the callback
+then edit your /etc/hosts on your computer and/or vm to point on your private IP. 
+Also both sign-in button + callbackURL has to be share the same url, otherwise two cookies will be created and it will lead to lost your session
 
 #### Authenticate Requests
 
@@ -87,14 +88,7 @@ app.get( '/auth/google/callback',
 
 ## Examples
 
-For a complete, working example, refer to the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth2).
-
-## Tests
-
-    $ npm install --dev
-    $ make test
-
-[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-google-oauth.png)](http://travis-ci.org/jaredhanson/passport-google-oauth)
+For a complete, working example, refer to the [OAuth 2.0 example](https://github.com/estebita/passport-google-oauth/tree/master/examples/oauth2).
 
 ## Credits
 
