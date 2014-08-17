@@ -1,25 +1,12 @@
 {
   "name": "kroknet-passport-google-oauth",
-  "version": "0.1",
-  "description": "Google (OAuth) authentication strategies for Passport.",
-  "keywords": ["passport", "google", "auth", "authn", "authentication", "identity"],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Estebita/passport-google-oauth.git"
+  "version": "0.0.1",
+  "description": "kroknet-passport-google-oauthv2 w/ google+ ",
+  "main": "./lib/kroknet-passport-google-oauth/index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
   },
-  "bugs": {
-    "url": "http://github.com/Estebita/passport-google-oauth/issues"
-  },
-  "author": {
-    "name": "Jared Hanson",
-    "email": "jaredhanson@gmail.com",
-    "url": "http://www.jaredhanson.net/"
-  },
-  "licenses": [ {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT" 
-  } ],
-  "main": "./lib/kroknet-passport-google-oauth",
   "dependencies": {
     "pkginfo": "0.2.x",
     "passport-oauth2": "~1.1.2"
@@ -28,7 +15,23 @@
     "vows": "0.6.x"
   },
   "scripts": {
-    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": { "node": ">= 0.4.0" }
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Estebita/passport-google-oauth.git"
+  },
+  "keywords": [
+    "auth",
+    "google",
+    "google+",
+    "passportjs",
+    "oauth2"
+  ],
+  "author": "Alexis Gruet <alexis.gruet@kroknet.com> (http://www.swiatubezpieczen.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Estebita/passport-google-oauth/issues"
+  },
+  "homepage": "https://github.com/Estebita/passport-google-oauth"
 }
