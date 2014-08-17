@@ -41,7 +41,7 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://yourdormain:3000/auth/google/callback",
     passReqToCallback   : true
   },
-  function(accessToken, refreshToken, profile, done) {
+  function(request, accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
       
