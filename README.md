@@ -67,6 +67,24 @@ app.get( '/auth/google/callback',
 }));
 ```
 
+#### What you will get in profile response ? 
+
+```
+provider         always set to `google`
+id
+name
+displayName
+birthday
+relationship
+isPerson
+isPlusUser
+placesLived
+language
+emails
+gender
+picture
+```
+
 ## Examples
 
 For a complete, working example, refer to the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth2).
