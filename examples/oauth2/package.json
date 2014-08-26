@@ -1,6 +1,6 @@
 {
   "name": "passport-google-oauth-examples-oauth2",
-  "version": "0.0.0",
+  "version": "2.5.8",
   "dependencies": {
     "express": ">= 0.0.0",
     "ejs": ">= 0.0.0",
