@@ -9,6 +9,8 @@ unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
 
+The client id and client secret needed to authenticate with Google can be set up from the developer's console [Google Developer's Console](https://console.developers.google.com/project).
+
 ## Install
 
     $ npm install passport-google-oauth
