@@ -1,6 +1,6 @@
 {
   "name": "passport-google-oauth",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Google (OAuth) authentication strategies for Passport.",
   "keywords": ["passport", "google", "auth", "authn", "authentication", "identity"],
   "repository": {
