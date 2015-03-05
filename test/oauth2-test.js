@@ -159,6 +159,7 @@ vows.describe('GoogleStrategy').addBatch({
         assert.equal(profile.name.givenName, 'Jared');
         assert.equal(profile.emails[0].value, 'example@gmail.com');
         assert.equal(profile.emails[0].type, 'account');
+        assert.equal(profile.photos[0].value, 'https://lh5.googleusercontent.com/-AAAAA-AAAAA/AAAAAAAAAAA/AAAAAAAAAAA/AAAAAAAAAAA/photo.jpg?sz=50');
       },
       'should set raw property' : function(err, profile) {
         assert.isString(profile._raw);
