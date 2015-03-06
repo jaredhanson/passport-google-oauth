@@ -45,6 +45,8 @@ passport.use(new GoogleStrategy({
 Use `passport.authenticate()`, specifying the `'google'` strategy, to
 authenticate requests.
 
+Authentication with Google requires an extra scope parameter.  For information, go [here](https://developers.google.com/accounts/docs/OpenIDConnect#scope-param).
+
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
@@ -89,13 +91,14 @@ passport.use(new GoogleStrategy({
 
 Use `passport.authenticate()`, specifying the `'google'` strategy, to
 authenticate requests.
+Authentication with Google requires an extra scope parameter.  For information, go [here](https://developers.google.com/accounts/docs/OpenIDConnect#scope-param).
 
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
 ```Javascript
 app.get('/auth/google',
-  passport.authenticate('google'));
+  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }));
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
