@@ -1,6 +1,11 @@
 var express = require('express')
   , passport = require('passport')
   , util = require('util')
+  , morgan = require('morgan')
+  , cookieParser = require('cookie-parser')
+  , bodyParser = require('body-parser')
+  , methodOverride = require('method-override')
+  , session = require('express-session')
   , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // API Access link for creating client ID and secret:
@@ -50,24 +55,25 @@ passport.use(new GoogleStrategy({
 
 
 
-var app = express.createServer();
+var app = express();
 
-// configure Express
-app.configure(function() {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.logger());
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
-  // persistent login sessions (recommended).
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs'); 
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false })) 
+app.use(bodyParser.json())
+app.use(methodOverride());
+app.use(session({ 
+	secret: 'keyboard cat',
+	saveUninitialized: false,
+	resave: true
+	}));
+// Initialize Passport!  Also use passport.session() middelware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res){
