@@ -6,6 +6,7 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , methodOverride = require('method-override')
   , session = require('express-session')
+  , layouts = require('express-ejs-layouts')
   , GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
 // API Access link for creating consumer key and secret:
@@ -59,7 +60,8 @@ passport.use(new GoogleStrategy({
 var app = express();
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs'); 
+app.set('view engine', 'ejs');
+app.use(layouts);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false })) 
