@@ -108,6 +108,13 @@ app.get('/auth/google/callback',
   });
 ```
 
+You may notice that the refresh token comes back undefined on non-initial authentication attempts. To force an approval prompt and get back a refresh token with every call, add the params `accessType` and `approvalPrompt` to your `passport.authenticate()` call. For example:
+
+```Javascript
+app.get('/auth/google',
+  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login', accessType: "offline", approvalPrompt: "force" }));
+```
+
 ## Examples
 
 For a complete, working example, refer to the [OAuth 1.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth)
