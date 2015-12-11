@@ -2,7 +2,7 @@
   "name": "passport-google-oauth-examples-oauth2",
   "version": "0.0.0",
   "dependencies": {
-    "express": ">= 0.0.0",
+    "express": "3.*",
     "ejs": ">= 0.0.0",
     "passport": ">= 0.0.0",
     "passport-google-oauth": ">= 0.0.0"
