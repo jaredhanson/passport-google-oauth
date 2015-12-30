@@ -2,8 +2,11 @@
   "name": "passport-google-oauth-examples-oauth2",
   "version": "0.0.0",
   "dependencies": {
-    "express": ">= 0.0.0",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
     "ejs": ">= 0.0.0",
+    "express": ">= 4.0.0",
+    "morgan": "^1.6.1",
     "passport": ">= 0.0.0",
     "passport-google-oauth": ">= 0.0.0"
   }
