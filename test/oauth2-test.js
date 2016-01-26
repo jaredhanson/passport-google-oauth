@@ -82,54 +82,19 @@ vows.describe('GoogleStrategy').addBatch({
       
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
-        var body = '{ \
- "kind": "plus#person",\
- "occupation": "Software Engineer",\
- "gender": "male",\
- "emails": [\
-  {\
-    "value": "example@gmail.com",\
-    "type": "account"\
-  }\
- ],\
- "urls": [\
-  {\
-   "value": "http://www.jaredhanson.net/",\
-   "type": "otherProfile",\
-   "label": "Jared Hanson"\
-  }\
- ],\
- "objectType": "person",\
- "id": "111111111111111111111",\
- "displayName": "Jared Hanson",\
- "name": {\
-  "familyName": "Hanson",\
-  "givenName": "Jared"\
- },\
- "url": "https://plus.google.com/+JaredHanson",\
- "image": {\
-  "url": "https://lh5.googleusercontent.com/-AAAAA-AAAAA/AAAAAAAAAAA/AAAAAAAAAAA/AAAAAAAAAAA/photo.jpg?sz=50",\
-  "isDefault": false\
- },\
- "organizations": [\
-  {\
-   "name": "South Dakota School of Mines & Technology",\
-   "type": "school",\
-   "primary": false\
-  }\
- ],\
- "placesLived": [\
-  {\
-   "value": "Berkeley, CA",\
-   "primary": true\
-  }\
- ],\
- "isPlusUser": true,\
- "language": "en",\
- "circledByCount": 77,\
- "verified": false\
-}';
-        
+        var body = '{\
+         "id": "123456789",\
+         "email": "example@gmail.com",\
+         "verified_email": true,\
+         "name": "Isman Usoh",\
+         "given_name": "Isman",\
+         "family_name": "Usoh",\
+         "link": "https://plus.google.com/+isman-usoh",\
+         "picture": "https://lh5.googleusercontent.com/-AAAAA-AAAAA/AAAAAAAAAAA/AAAAAAAAAAA/AAAAAAAAAAA/photo.jpg",\
+         "gender": "male",\
+         "locale": "th"\
+        }';
+
         callback(null, body, undefined);
       }
       
@@ -153,13 +118,12 @@ vows.describe('GoogleStrategy').addBatch({
       },
       'should load profile' : function(err, profile) {
         assert.equal(profile.provider, 'google');
-        assert.equal(profile.id, '111111111111111111111');
-        assert.equal(profile.displayName, 'Jared Hanson');
-        assert.equal(profile.name.familyName, 'Hanson');
-        assert.equal(profile.name.givenName, 'Jared');
+        assert.equal(profile.id, '123456789');
+        assert.equal(profile.displayName, 'Isman Usoh');
+        assert.equal(profile.name.familyName, 'Usoh');
+        assert.equal(profile.name.givenName, 'Isman');
         assert.equal(profile.emails[0].value, 'example@gmail.com');
-        assert.equal(profile.emails[0].type, 'account');
-        assert.equal(profile.photos[0].value, 'https://lh5.googleusercontent.com/-AAAAA-AAAAA/AAAAAAAAAAA/AAAAAAAAAAA/AAAAAAAAAAA/photo.jpg?sz=50');
+        assert.equal(profile.photos[0].value, 'https://lh5.googleusercontent.com/-AAAAA-AAAAA/AAAAAAAAAAA/AAAAAAAAAAA/AAAAAAAAAAA/photo.jpg');
       },
       'should set raw property' : function(err, profile) {
         assert.isString(profile._raw);
