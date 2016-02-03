@@ -122,11 +122,11 @@ describe('Strategy', function() {
         .req(function(req) {
           req.session = {};
         })
-        .authenticate({ hostedDomain: 'example.com' });
+        .authenticate({ hostedDomain: 'mycollege.edu' });
     });
   
     it('should be redirected', function() {
-      expect(url).to.equal('https://accounts.google.com/o/oauth2/v2/auth?hd=example.com&response_type=code&redirect_uri=&client_id=ABC123');
+      expect(url).to.equal('https://accounts.google.com/o/oauth2/v2/auth?hd=mycollege.edu&response_type=code&redirect_uri=&client_id=ABC123');
     });
   }); // authorization request with Google Apps for Work parameters
   
@@ -148,11 +148,11 @@ describe('Strategy', function() {
         .req(function(req) {
           req.session = {};
         })
-        .authenticate({ hd: 'example.com' });
+        .authenticate({ hd: 'mycollege.edu' });
     });
   
     it('should be redirected', function() {
-      expect(url).to.equal('https://accounts.google.com/o/oauth2/v2/auth?hd=example.com&response_type=code&redirect_uri=&client_id=ABC123');
+      expect(url).to.equal('https://accounts.google.com/o/oauth2/v2/auth?hd=mycollege.edu&response_type=code&redirect_uri=&client_id=ABC123');
     });
   }); // authorization request with Google Apps for Work parameters, in abbreviated form
   
@@ -226,11 +226,11 @@ describe('Strategy', function() {
         .req(function(req) {
           req.session = {};
         })
-        .authenticate({ approvalPrompt: 'none', userID: '1' });
+        .authenticate({ approvalPrompt: 'force', userID: 'bob@gmail.com' });
     });
   
     it('should be redirected', function() {
-      expect(url).to.equal('https://accounts.google.com/o/oauth2/v2/auth?approval_prompt=none&user_id=1&response_type=code&redirect_uri=&client_id=ABC123');
+      expect(url).to.equal('https://accounts.google.com/o/oauth2/v2/auth?approval_prompt=force&user_id=bob%40gmail.com&response_type=code&redirect_uri=&client_id=ABC123');
     });
   }); // authorization request with undocumented parameters
   
