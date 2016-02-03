@@ -35,6 +35,7 @@
     "passport-oauth": "^1.0.0"
   },
   "devDependencies": {
+    "make-node": "0.3.x",
     "vows": "0.8.x"
   },
   "engines": {
