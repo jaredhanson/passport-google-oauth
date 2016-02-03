@@ -1,4 +1,10 @@
-# Passport-Google-OAuth
+# passport-google-oauth
+
+[![Build](https://img.shields.io/travis/jaredhanson/passport-google-oauth.svg)](https://travis-ci.org/jaredhanson/passport-google-oauth)
+[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-google-oauth.svg)](https://coveralls.io/r/jaredhanson/passport-google-oauth)
+[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-google-oauth.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-google-oauth)
+[![Dependencies](https://img.shields.io/david/jaredhanson/passport-google-oauth.svg)](https://david-dm.org/jaredhanson/passport-google-oauth)
+
 
 [Passport](http://passportjs.org/) strategies for authenticating with [Google](http://www.google.com/)
 using OAuth 1.0a and OAuth 2.0.
