@@ -32,11 +32,11 @@
   "main": "./lib/passport-google-oauth",
   "dependencies": {
     "pkginfo": "0.3.x",
-    "passport-oauth": "^1.0.0"
+    "passport-oauth": "1.x.x"
   },
   "devDependencies": {
     "make-node": "0.3.x",
-    "vows": "0.8.x"
+    "vows": "0.7.x"
   },
   "engines": {
     "node": ">= 0.4.0"
