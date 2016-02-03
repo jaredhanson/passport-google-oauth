@@ -99,6 +99,38 @@ describe('Strategy#userProfile', function() {
     });
   });
   
+  describe('error caused by invalid token when using Google+ API', function() {
+    var strategy = new GoogleStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        userProfileURL: 'https://www.googleapis.com/plus/v1/people/me'
+      }, function() {});
+    
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      if (url != 'https://www.googleapis.com/plus/v1/people/me') { return callback(new Error('incorrect url argument')); }
+      
+      var body = '{\n "error": {\n  "errors": [\n   {\n    "domain": "global",\n    "reason": "authError",\n    "message": "Invalid Credentials",\n    "locationType": "header",\n    "location": "Authorization"\n   }\n  ],\n  "code": 401,\n  "message": "Invalid Credentials"\n }\n}\n';
+      callback({ statusCode: 401, data: body });
+    };
+      
+    var err, profile;
+    
+    before(function(done) {
+      strategy.userProfile('invalid-token', function(e, p) {
+        err = e;
+        profile = p;
+        done();
+      });
+    });
+  
+    it('should error', function() {
+      expect(err).to.be.an.instanceOf(Error);
+      expect(err.constructor.name).to.equal('GooglePlusAPIError');
+      expect(err.message).to.equal("Invalid Credentials");
+      expect(err.code).to.equal(401);
+    });
+  }); // error caused by invalid token
+  
   describe('error caused by malformed response', function() {
     var strategy =  new GoogleStrategy({
         clientID: 'ABC123',
