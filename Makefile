@@ -1,11 +1,12 @@
-WITH_VOWS = 1
 include node_modules/make-node/main.mk
 
 
-SOURCES = lib/**/*.js
-TESTS = test/*-test.js
+SOURCES = lib/*.js lib/**/*.js
+TESTS = test/*.test.js
 
 LCOVFILE = ./reports/coverage/lcov.info
+
+MOCHAFLAGS = --require ./test/bootstrap/node
 
 
 view-docs:
