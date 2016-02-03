@@ -41,6 +41,6 @@
     "node": ">= 0.4.0"
   },
   "scripts": {
-    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
+    "test": "node_modules/.bin/vows test/*-test.js"
   }
 }
