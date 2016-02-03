@@ -27,5 +27,5 @@
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
   },
-  "engines": { "node": ">= 0.4.0" }
+  "engines": { "node": ">= 1.0.0" }
 }
