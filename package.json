@@ -2,7 +2,19 @@
   "name": "passport-google-oauth",
   "version": "0.2.0",
   "description": "Google (OAuth) authentication strategies for Passport.",
-  "keywords": ["passport", "google", "auth", "authn", "authentication", "identity"],
+  "keywords": [
+    "passport",
+    "google",
+    "auth",
+    "authn",
+    "authentication",
+    "identity"
+  ],
+  "author": {
+    "name": "Jared Hanson",
+    "email": "jaredhanson@gmail.com",
+    "url": "http://www.jaredhanson.net/"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/jaredhanson/passport-google-oauth.git"
@@ -10,12 +22,13 @@
   "bugs": {
     "url": "http://github.com/jaredhanson/passport-google-oauth/issues"
   },
-  "author": {
-    "name": "Jared Hanson",
-    "email": "jaredhanson@gmail.com",
-    "url": "http://www.jaredhanson.net/"
-  },
   "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
   "main": "./lib/passport-google-oauth",
   "dependencies": {
     "pkginfo": "0.3.x",
@@ -24,8 +37,10 @@
   "devDependencies": {
     "vows": "0.8.x"
   },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
-  },
-  "engines": { "node": ">= 0.4.0" }
+  }
 }
