@@ -52,6 +52,32 @@ describe('Strategy', function() {
     });
   }); // authorization request with documented parameters
   
+  describe('authorization request with documented parameters from OpenID Connect', function() {
+    var strategy = new GoogleStrategy({
+      clientID: 'ABC123',
+      clientSecret: 'secret'
+    }, function() {});
+    
+    
+    var url;
+  
+    before(function(done) {
+      chai.passport.use(strategy)
+        .redirect(function(u) {
+          url = u;
+          done();
+        })
+        .req(function(req) {
+          req.session = {};
+        })
+        .authenticate({ display: 'touch' });
+    });
+  
+    it('should be redirected', function() {
+      expect(url).to.equal('https://accounts.google.com/o/oauth2/v2/auth?display=touch&response_type=code&redirect_uri=&client_id=ABC123');
+    });
+  }); // authorization request with documented parameters from OpenID Connect
+  
   describe('authorization request with incremental authorization parameters', function() {
     var strategy = new GoogleStrategy({
       clientID: 'ABC123',
