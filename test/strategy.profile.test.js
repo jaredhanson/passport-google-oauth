@@ -174,7 +174,38 @@ describe('Strategy#userProfile', function() {
       expect(err.message).to.equal("Invalid Credentials");
       expect(err.code).to.equal(401);
     });
-  }); // error caused by invalid token
+  }); // error caused by invalid token when using Google+ API
+  
+  describe('error caused by invalid token when using user info endpoint', function() {
+    var strategy = new GoogleStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+    
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      if (url != 'https://www.googleapis.com/plus/v1/people/me') { return callback(new Error('incorrect url argument')); }
+      
+      var body = '{\n "error": "invalid_request",\n "error_description": "Invalid Credentials"\n}\n';
+      callback({ statusCode: 401, data: body });
+    };
+      
+    var err, profile;
+    
+    before(function(done) {
+      strategy.userProfile('invalid-token', function(e, p) {
+        err = e;
+        profile = p;
+        done();
+      });
+    });
+  
+    it('should error', function() {
+      expect(err).to.be.an.instanceOf(Error);
+      expect(err.constructor.name).to.equal('UserInfoError');
+      expect(err.message).to.equal("Invalid Credentials");
+      expect(err.code).to.equal('invalid_request');
+    });
+  }); // error caused by invalid token when using user info endpoint
   
   describe('error caused by malformed response', function() {
     var strategy =  new GoogleStrategy({
