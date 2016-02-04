@@ -1,7 +1,7 @@
 include node_modules/make-node/main.mk
 
 
-SOURCES = lib/*.js lib/**/*.js
+SOURCES = lib/*.js
 TESTS = test/*.test.js
 
 LCOVFILE = ./reports/coverage/lcov.info
