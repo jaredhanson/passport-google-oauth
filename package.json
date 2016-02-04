@@ -31,21 +31,18 @@
   ],
   "main": "./lib",
   "dependencies": {
-    "pkginfo": "0.3.x",
     "passport-google-oauth1": "1.x.x",
     "passport-google-oauth20": "1.x.x"
   },
   "devDependencies": {
     "make-node": "0.3.x",
-    "vows": "0.7.x",
     "mocha": "1.x.x",
-    "chai": "2.x.x",
-    "chai-passport-strategy": "1.x.x"
+    "chai": "2.x.x"
   },
   "engines": {
     "node": ">= 0.4.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/vows test/*-test.js"
+    "test": "node_modules/.bin/mocha --require test/bootstrap/node test/*.test.js"
   }
 }

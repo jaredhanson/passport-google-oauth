@@ -1,7 +1,3 @@
-var chai = require('chai')
-  , passport = require('chai-passport-strategy');
-
-chai.use(passport);
-
+var chai = require('chai');
 
 global.expect = chai.expect;
