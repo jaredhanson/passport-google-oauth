@@ -9,136 +9,53 @@
 [Passport](http://passportjs.org/) strategies for authenticating with [Google](http://www.google.com/)
 using OAuth 1.0a and OAuth 2.0.
 
-This module lets you authenticate using Google in your Node.js applications.
-By plugging into Passport, Google authentication can be easily and
-unobtrusively integrated into any application or framework that supports
-[Connect](http://www.senchalabs.org/connect/)-style middleware, including
-[Express](http://expressjs.com/).
-
-The client id and client secret needed to authenticate with Google can be set up from the developer's console [Google Developer's Console](https://console.developers.google.com/project).
+This is a meta-module that combines [passport-google-oauth1](https://github.com/jaredhanson/passport-google-oauth1)
+and [passport-google-oauth20](https://github.com/jaredhanson/passport-google-oauth2).
+It exists for backwards-compatibility with applications making use of the
+combined package.  As of version 1.0.0, it is encouraged to declare dependencies
+on the module that implements the specific version of OAuth needed.
 
 ## Install
 
     $ npm install passport-google-oauth
 
-## Usage of OAuth 1.0
+## Contributing
 
-#### Configure Strategy
+#### Tests
 
-The Google OAuth 1.0 authentication strategy authenticates users using a Google
-account and OAuth tokens.  The strategy requires a `verify` callback, which
-accepts these credentials and calls `done` providing a user, as well as `options`
-specifying a consumer key, consumer secret, and callback URL.
+The test suite is located in the `test/` directory.  All new features are
+expected to have corresponding test cases.  Ensure that the complete test suite
+passes by executing:
 
-```Javascript
-var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
-
-passport.use(new GoogleStrategy({
-    consumerKey: GOOGLE_CONSUMER_KEY,
-    consumerSecret: GOOGLE_CONSUMER_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/google/callback"
-  },
-  function(token, tokenSecret, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
+```bash
+$ make test
 ```
 
-#### Authenticate Requests
+#### Coverage
 
-Use `passport.authenticate()`, specifying the `'google'` strategy, to
-authenticate requests.
+The test suite covers 100% of the code base.  All new feature development is
+expected to maintain that level.  Coverage reports can be viewed by executing:
 
-Authentication with Google requires an extra scope parameter.  For information, go [here](https://developers.google.com/accounts/docs/OpenIDConnect#scope-param).
-
-For example, as route middleware in an [Express](http://expressjs.com/)
-application:
-
-```Javascript
-app.get('/auth/google',
-  passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' }));
-
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+```bash
+$ make test-cov
+$ make view-cov
 ```
 
-## Usage of OAuth 2.0
+## Support
 
-#### Configure Strategy
+#### Funding
 
-The Google OAuth 2.0 authentication strategy authenticates users using a Google
-account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
-accepts these credentials and calls `done` providing a user, as well as
-`options` specifying a client ID, client secret, and callback URL.
+This software is provided to you as open source, free of charge.  The time and
+effort to develop and maintain this project is dedicated by [@jaredhanson](https://github.com/jaredhanson).
+If you (or your employer) benefit from this project, please consider a financial
+contribution.  Your contribution helps continue the efforts that produce this
+and other open source software.
 
-```Javascript
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
-```
-
-#### Authenticate Requests
-
-Use `passport.authenticate()`, specifying the `'google'` strategy, to
-authenticate requests.
-Authentication with Google requires an extra scope parameter.  For information, go [here](https://developers.google.com/accounts/docs/OpenIDConnect#scope-param).
-
-For example, as route middleware in an [Express](http://expressjs.com/)
-application:
-
-```Javascript
-app.get('/auth/google',
-  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }));
-
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
-```
-
-You may notice that the refresh token comes back undefined on non-initial authentication attempts. To force an approval prompt and get back a refresh token with every call, add the params `accessType` and `approvalPrompt` to your `passport.authenticate()` call. For example:
-
-```Javascript
-app.get('/auth/google',
-  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login', accessType: "offline", approvalPrompt: "force" }));
-```
-
-## Examples
-
-For a complete, working example, refer to the [OAuth 1.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth)
-and the [OAuth 2.0 example](https://github.com/jaredhanson/passport-google-oauth/tree/master/examples/oauth2).
-
-## Tests
-
-    $ npm install --dev
-    $ make test
-
-[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-google-oauth.png)](http://travis-ci.org/jaredhanson/passport-google-oauth)
-
-## Credits
-
-  - [Jared Hanson](http://github.com/jaredhanson)
+Funds are accepted via [PayPal](https://paypal.me/jaredhanson), [Venmo](https://venmo.com/jaredhanson),
+and [other](http://jaredhanson.net/pay) methods.  Any amount is appreciated.
 
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2012-2013 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2012-2016 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
