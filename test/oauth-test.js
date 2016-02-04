@@ -1,7 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var GoogleStrategy = require('../lib/oauth');
+var GoogleStrategy = require('passport-google-oauth1');
 
 
 vows.describe('GoogleStrategy').addBatch({
