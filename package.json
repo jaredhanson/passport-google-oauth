@@ -32,7 +32,7 @@
   "main": "./lib",
   "dependencies": {
     "passport-google-oauth1": "1.x.x",
-    "passport-google-oauth20": "1.x.x"
+    "passport-google-oauth20": "2.x.x"
   },
   "devDependencies": {
     "make-node": "0.3.x",
