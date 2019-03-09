@@ -15,12 +15,10 @@ on the module that implements the specific version of OAuth needed.
 
 ---
 
-Status:
-[![Build](https://img.shields.io/travis/jaredhanson/passport-google-oauth.svg)](https://travis-ci.org/jaredhanson/passport-google-oauth)
-[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-google-oauth.svg)](https://coveralls.io/r/jaredhanson/passport-google-oauth)
-[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-google-oauth.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-google-oauth)
-[![Dependencies](https://img.shields.io/david/jaredhanson/passport-google-oauth.svg)](https://david-dm.org/jaredhanson/passport-google-oauth)
-
+[![npm](https://img.shields.io/npm/v/passport-google-oauth.svg)](https://www.npmjs.com/package/passport-google-oauth)
+[![build](https://img.shields.io/travis/jaredhanson/passport-google-oauth.svg)](https://travis-ci.org/jaredhanson/passport-google-oauth)
+[![coverage](https://img.shields.io/coveralls/jaredhanson/passport-google-oauth.svg)](https://coveralls.io/github/jaredhanson/passport-google-oauth)
+[...](https://github.com/jaredhanson/passport-google-oauth/wiki/Status)
 
 ## Install
 
