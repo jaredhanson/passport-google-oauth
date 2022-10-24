@@ -9,6 +9,13 @@ It exists for backwards-compatibility with applications making use of the
 combined package.  As of version 1.0.0, it is encouraged to declare dependencies
 on the module that implements the specific version of OAuth needed.
 
+<div align="center">
+  
+:brain: [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/?utm_source=github&utm_medium=referral&utm_campaign=passport-google-oauth&utm_content=nav-concept) •
+:heart: [Sponsors](https://www.passportjs.org/sponsors/?utm_source=github&utm_medium=referral&utm_campaign=passport-google-oauth&utm_content=nav-sponsors)
+
+</div>
+
 [![npm](https://img.shields.io/npm/v/passport-google-oauth.svg)](https://www.npmjs.com/package/passport-google-oauth)
 [![build](https://img.shields.io/travis/jaredhanson/passport-google-oauth.svg)](https://travis-ci.org/jaredhanson/passport-google-oauth)
 [![coverage](https://img.shields.io/coveralls/jaredhanson/passport-google-oauth.svg)](https://coveralls.io/github/jaredhanson/passport-google-oauth)
